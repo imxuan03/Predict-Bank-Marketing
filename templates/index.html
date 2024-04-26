@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bank Marketing Prediction</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa; /* Màu nền */
+      color: #333; /* Màu chữ */
+      padding-top: 50px;
+    }
+
+    .container {
+      background-color: #fff; /* Màu nền của container */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Hiển thị bóng đổ */
+      width: 50%;
+    }
+
+    h1 {
+      color: #007bff; /* Màu của tiêu đề */
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    form label {
+      font-weight: bold; /* Đậm chữ của label */
+    }
+
+    form select,
+    form input[type="number"],
+    form input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box; /* Đảm bảo kích thước của input là bao gồm cả border và padding */
+    }
+
+    form select {
+      appearance: none; /* Ẩn giao diện mặc định của dropdown */
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23333'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e"); /* Sử dụng hình ảnh nhỏ làm background */
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+    }
+
+    form input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 12px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s; /* Tạo hiệu ứng chuyển đổi màu nền */
+    }
+
+    form input[type="submit"]:hover {
+      background-color: #0056b3; /* Màu nền khi hover */
+    }
+  </style>
+
+  <body>
+    <div class="container mb-5">
+      <h1 class="text-primary">Enter Bank Marketing Data</h1>
+      <form action="/predict" method="post">
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="attribute_1" /><br /><br />
+
+        <label for="job">Job</label>
+        <select id="job" name="attribute_2">
+          <option value="0">admin.</option>
+          <option value="11">unknown</option>
+          <option value="10">unemployed</option>
+          <option value="4">management</option>
+          <option value="3">housemaid</option>
+          <option value="2">entrepreneur</option>
+          <option value="8">student</option>
+          <option value="1">blue-collar</option>
+          <option value="6">self-employed</option>
+          <option value="5">retired</option>
+          <option value="9">technician</option>
+          <option value="7">services</option></select
+        ><br /><br />
+
+        <label for="marital">Marital</label>
+        <select id="marital" name="attribute_3">
+          <option value="1">married</option>
+          <option value="0">divorced</option>
+          <option value="2">single</option></select
+        ><br /><br />
+
+        <label for="education">Education</label>
+        <select id="education" name="attribute_4">
+          <option value="3">unknown</option>
+          <option value="1">secondary</option>
+          <option value="0">primary</option>
+          <option value="2">tertiary</option></select
+        ><br /><br />
+
+        <label for="default">Default</label>
+        <select id="default" name="attribute_5">
+          <option value="1">yes</option>
+          <option value="0">no</option></select
+        ><br /><br />
+
+        <label for="balance">Balance</label>
+        <input type="number" id="balance" name="attribute_6" /><br /><br />
+
+        <label for="housing">Housing</label>
+        <select id="housing" name="attribute_7">
+          <option value="1">yes</option>
+          <option value="0">no</option></select
+        ><br /><br />
+
+        <label for="loan">Loan</label>
+        <select id="loan" name="attribute_8">
+          <option value="1">yes</option>
+          <option value="0">no</option></select
+        ><br /><br />
+
+        <label for="contact">Contact</label>
+        <select id="contact" name="attribute_9">
+          <option value="2">unknown</option>
+          <option value="1">telephone</option>
+          <option value="0">cellular</option></select
+        ><br /><br />
+
+        <label for="day">Day</label>
+        <input type="number" id="day" name="attribute_10" /><br /><br />
+
+        <label for="month">Month</label>
+        <select id="month" name="attribute_11">
+          <option value="4">January</option>
+          <option value="3">February</option>
+          <option value="7">March</option>
+          <option value="0">April</option>
+          <option value="8">May</option>
+          <option value="6">June</option>
+          <option value="5">July</option>
+          <option value="1">August</option>
+          <option value="11">September</option>
+          <option value="10">October</option>
+          <option value="9">November</option>
+          <option value="2">December</option></select
+        ><br /><br />
+
+        <label for="duration">Duration</label>
+        <input type="number" id="duration" name="attribute_12" /><br /><br />
+
+        <label for="campaign">Campaign</label>
+        <input type="number" id="campaign" name="attribute_13" /><br /><br />
+
+        <label for="pdays">Pdays</label>
+        <input type="number" id="pdays" name="attribute_14" /><br /><br />
+
+        <label for="previous">Previous</label>
+        <input type="number" id="previous" name="attribute_15" /><br /><br />
+
+        <label for="poutcome">Poutcome</label>
+        <select id="poutcome" name="attribute_16">
+          <option value="3">unknown</option>
+          <option value="1">other</option>
+          <option value="0">failure</option>
+          <option value="2">success</option></select
+        ><br /><br />
+
+        <!-- Thêm các label và input cho các thuộc tính còn lại tương tự như trên -->
+
+        <label for="algorithm">Select Algorithm:</label>
+        <select id="algorithm" name="algorithm">
+          <option value="gaussian_naive_bayes">Gaussian Naive Bayes</option>
+          <option value="random_forest">Random Forest</option>
+          <option value="decision_tree">Decision Tree</option>
+          <option value="model_bagging">Bagging</option></select
+        ><br /><br />
+        <input type="submit" value="Predict" />
+      </form>
+    </div>
+  </body>
+</html>

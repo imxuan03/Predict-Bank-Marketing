@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Marketing Prediction Result</title>
+    <style>
+        /* CSS để tạo khung */
+        .container { 
+            width: 400px; /* Điều chỉnh kích thước khung theo nhu cầu */
+            height: 200px; /* Điều chỉnh chiều cao khung theo nhu cầu */
+            margin: 0 auto; /* Canh giữa */
+            border: 1px solid #ccc; /* Đường viền khung */
+            padding: 20px; /* Khoảng cách nội dung và khung */
+            display: table; /* Sử dụng table layout */
+            text-align: center; /* Canh giữa nội dung */
+        }
+
+        /* CSS để canh giữa nội dung theo chiều dọc */
+        .container .content {
+            display: table-cell;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>Prediction Result</h1>
+            <!-- <p>The predicted is: {{ prediction }}</p> -->
+            {% if prediction == 1 %}
+                <h2>The predicted result is: yes</h2>
+            {% elif prediction == 0 %}
+                <h2>The predicted result is: no</h2>
+            {% else %}
+                <h2>Invalid prediction value</h2>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
